@@ -1,3 +1,8 @@
+// Global API Configuration
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api'
+    : 'https://wings-backend-jada.onrender.com/api';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
@@ -707,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const finalMessage = messageParts.join(' | ');
 
                 // Submit to backend
-                fetch('http://localhost:5000/api/bookings', {
+                fetch(`${API_URL}/bookings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -876,7 +881,7 @@ I'd like to book a ride:
                 if (successCustomerPhone) successCustomerPhone.innerText = phone;
 
                 // Send to backend REST API
-                fetch('http://localhost:5000/api/bookings', {
+                fetch(`${API_URL}/bookings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -1009,7 +1014,7 @@ ${message ? `- *Message:* ${message}` : ''}`;
     /* ==========================================================================
        10. BACKEND INTEGRATION (DYNAMIC FETCH & RENDER)
        ========================================================================== */
-    const API_URL = 'http://localhost:5000/api';
+    // API_URL is defined globally at the top of this file
 
     // A. Dynamic Packages loading
     async function fetchDynamicPackages() {
