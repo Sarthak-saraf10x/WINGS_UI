@@ -1556,6 +1556,8 @@ button {
 .form-group input,
 .form-group select,
 .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
     padding: 12px 16px;
     border-radius: var(--border-radius-sm);
     border: 1.5px solid rgba(255, 255, 255, 0.3);
@@ -1777,6 +1779,8 @@ button {
 .service-modal-content .form-group input,
 .service-modal-content .form-group select,
 .service-modal-content .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
     border: 1.5px solid rgba(11, 61, 145, 0.2);
     color: var(--color-dark) !important;
     background-color: var(--color-white);
@@ -2247,6 +2251,22 @@ button {
 @media (max-width: 768px) {
     .logo-img {
         height: 56px;
+    }
+
+    .service-modal {
+        padding: 10px;
+    }
+
+    .service-modal-content {
+        padding: 24px 16px;
+        max-height: 95vh;
+    }
+
+    .service-modal-content .form-group input,
+    .service-modal-content .form-group select,
+    .service-modal-content .form-group textarea {
+        font-size: 16px !important;
+        padding: 12px 14px !important;
     }
 
     .section {
