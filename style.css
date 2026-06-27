@@ -2071,10 +2071,12 @@ button {
    10. FOOTER
    ========================================================================== */
 .footer {
-    background-color: #f1f5f9;
+    background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     color: #1e293b;
     padding: 80px 0 0 0;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .footer-top {
@@ -2187,9 +2189,11 @@ button {
 }
 
 .footer-bottom {
-    background-color: #e2e8f0;
+    background: rgba(226, 232, 240, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 24px 0;
-    border-top: 1px solid #cbd5e1;
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
     font-size: 0.85rem;
     color: #475569;
 }
