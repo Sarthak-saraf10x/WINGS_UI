@@ -109,10 +109,9 @@ button {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--color-primary);
+    background-color: #ffffff;
     z-index: 99999;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -124,26 +123,37 @@ button {
     pointer-events: none;
 }
 
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.preloader-logo {
+    height: 90px;
+    width: auto;
+    animation: pulse 2s infinite ease-in-out;
+}
+
 .spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    border-top-color: var(--color-accent);
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(15, 23, 42, 0.08);
+    border-top-color: var(--color-secondary);
     border-radius: var(--border-radius-circle);
     animation: spin 1s infinite linear;
-    margin-bottom: 20px;
 }
 
-.preloader-text {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    color: var(--color-white);
-    letter-spacing: 2px;
-}
-
-.preloader-text span {
-    color: var(--color-accent);
-    margin-left: 2px;
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(0.95);
+        opacity: 0.85;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
 }
 
 @keyframes spin {
