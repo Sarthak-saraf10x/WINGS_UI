@@ -2071,10 +2071,10 @@ button {
    10. FOOTER
    ========================================================================== */
 .footer {
-    background-color: #0F172A;
-    color: var(--color-white);
+    background-color: #f1f5f9;
+    color: #1e293b;
     padding: 80px 0 0 0;
-    border-top: 4px solid var(--color-primary);
+    border-top: 1px solid #e2e8f0;
 }
 
 .footer-top {
@@ -2088,7 +2088,7 @@ button {
     font-family: var(--font-heading);
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--color-accent);
+    color: #0f172a;
     margin-bottom: 24px;
     position: relative;
 }
@@ -2104,7 +2104,7 @@ button {
 }
 
 .brand-col .footer-desc {
-    color: #94A3B8;
+    color: #475569;
     font-size: 0.9rem;
     margin: 20px 0 24px 0;
     line-height: 1.6;
@@ -2117,7 +2117,7 @@ button {
     font-family: var(--font-heading);
     font-weight: 800;
     font-size: 1.5rem;
-    color: var(--color-white);
+    color: #0f172a;
 }
 
 .footer-socials {
@@ -2129,17 +2129,17 @@ button {
     width: 40px;
     height: 40px;
     border-radius: var(--border-radius-circle);
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--color-white);
+    background-color: rgba(15, 23, 42, 0.05);
+    color: #1e293b;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .footer-socials a:hover {
-    background-color: var(--color-accent);
-    color: var(--color-dark);
+    background-color: var(--color-secondary);
+    color: var(--color-white);
     transform: translateY(-3px);
 }
 
@@ -2149,7 +2149,7 @@ button {
 }
 
 .links-col a {
-    color: #94A3B8;
+    color: #475569;
     font-size: 0.9rem;
     display: inline-block;
 }
@@ -2168,7 +2168,7 @@ button {
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    color: #94A3B8;
+    color: #475569;
     font-size: 0.9rem;
 }
 
@@ -2183,15 +2183,15 @@ button {
 }
 
 .footer-contact-list a:hover {
-    color: var(--color-white);
+    color: var(--color-secondary);
 }
 
 .footer-bottom {
-    background-color: #0B0F19;
+    background-color: #e2e8f0;
     padding: 24px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid #cbd5e1;
     font-size: 0.85rem;
-    color: #64748B;
+    color: #475569;
 }
 
 .footer-bottom-container {
@@ -2207,8 +2207,12 @@ button {
     gap: 24px;
 }
 
+.footer-bottom-links a {
+    color: #475569;
+}
+
 .footer-bottom-links a:hover {
-    color: var(--color-white);
+    color: var(--color-secondary);
 }
 
 /* ==========================================================================
