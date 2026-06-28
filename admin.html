@@ -1718,6 +1718,50 @@
                 }
             });
 
+            // Auto-formatting for pricing and rates fields
+            function formatPriceField(inputEl, type) {
+                let val = inputEl.value.trim();
+                if (!val) return;
+
+                // Extract all digits to format them cleanly
+                const cleanDigits = val.replace(/[^\d]/g, '');
+                if (!cleanDigits) return;
+
+                const numberVal = parseInt(cleanDigits, 10);
+                if (isNaN(numberVal)) return;
+
+                const formattedNum = numberVal.toLocaleString('en-IN');
+
+                if (type === 'per_km') {
+                    inputEl.value = `₹${formattedNum}/km`;
+                } else if (type === 'per_day') {
+                    inputEl.value = `₹${formattedNum}/day`;
+                } else if (type === 'per_hr') {
+                    inputEl.value = `₹${formattedNum}/hr`;
+                } else if (type === 'min_fare') {
+                    inputEl.value = `₹${formattedNum} minimum`;
+                } else if (type === 'starting_price') {
+                    inputEl.value = `Starting ₹${formattedNum}`;
+                }
+            }
+
+            const formatConfig = [
+                { id: 'rentalRatePerKm', type: 'per_km' },
+                { id: 'rentalRatePerDay', type: 'per_day' },
+                { id: 'rentalRatePerHour', type: 'per_hr' },
+                { id: 'rentalMinFare', type: 'min_fare' },
+                { id: 'vehiclePricePerKm', type: 'per_km' },
+                { id: 'packagePrice', type: 'starting_price' }
+            ];
+
+            formatConfig.forEach(cfg => {
+                const el = document.getElementById(cfg.id);
+                if (el) {
+                    el.addEventListener('blur', () => formatPriceField(el, cfg.type));
+                    el.addEventListener('change', () => formatPriceField(el, cfg.type));
+                }
+            });
+
             // Logout Listener
             document.getElementById('logoutBtn').addEventListener('click', () => {
                 localStorage.removeItem('wings_token');
