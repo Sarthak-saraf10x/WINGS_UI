@@ -220,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const goToSlide = (index) => {
+        if (!reviewsSlider || slideCount <= 1) return;
         currentSlide = index;
         if (currentSlide >= slideCount) currentSlide = 0;
         if (currentSlide < 0) currentSlide = slideCount - 1;
@@ -228,10 +229,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const nextSlide = () => {
+        if (!reviewsSlider || slideCount <= 1) return;
         goToSlide(currentSlide + 1);
     };
 
     const prevSlide = () => {
+        if (!reviewsSlider || slideCount <= 1) return;
         goToSlide(currentSlide - 1);
     };
 
@@ -239,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sliderPrev) sliderPrev.addEventListener('click', prevSlide);
 
     const startAutoSlide = () => {
+        if (!reviewsSlider || slideCount <= 1) return;
         autoSlideInterval = setInterval(nextSlide, 5000); // Slide every 5 seconds
     };
 
@@ -247,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoSlide();
     };
 
-    if (reviewsSlider) {
+    if (reviewsSlider && slideCount > 1) {
         startAutoSlide();
     }
 
@@ -1146,17 +1150,17 @@ ${message ? `- *Message:* ${message}` : ''}`;
 
                     slide.innerHTML = `
                         <div class="review-card">
-                            <div class="reviewer-profile">
-                                <img src="${rev.authorPhotoUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150'}" alt="${rev.authorName}" class="reviewer-img" loading="lazy">
-                                <div class="reviewer-info">
-                                    <h4 class="reviewer-name">${rev.authorName}</h4>
-                                    <span class="reviewer-trip">${rev.tripType || 'Verified Customer'}</span>
-                                </div>
-                                <span style="margin-left: auto; color: var(--primary); font-size: 1.25rem;"><i class="bi bi-google"></i></span>
+                            <div class="review-stars">
+                                ${starsHtml}
                             </div>
-                            <div class="review-rating">${starsHtml}</div>
                             <p class="review-text">"${rev.text}"</p>
-                            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 10px;">${rev.relativeTimeDescription || 'Recently'}</span>
+                            <div class="review-user">
+                                <img src="${rev.authorPhotoUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150'}" alt="${rev.authorName}" class="user-avatar" loading="lazy">
+                                <div class="user-info">
+                                    <h4>${rev.authorName}</h4>
+                                    <p>${rev.tripType || 'Verified Customer'}</p>
+                                </div>
+                            </div>
                         </div>
                     `;
                     slider.appendChild(slide);
@@ -1167,13 +1171,26 @@ ${message ? `- *Message:* ${message}` : ''}`;
                 slideCount = newSlides.length;
                 currentSlide = 0;
 
-                newSlides.forEach((_, idx) => {
-                    const dot = document.createElement('div');
-                    dot.classList.add('dot');
-                    if (idx === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToSlide(idx));
-                    dotsContainer.appendChild(dot);
-                });
+                const prevBtn = document.getElementById('sliderPrev');
+                const nextBtn = document.getElementById('sliderNext');
+
+                if (slideCount <= 1) {
+                    if (prevBtn) prevBtn.style.display = 'none';
+                    if (nextBtn) nextBtn.style.display = 'none';
+                    if (dotsContainer) dotsContainer.style.display = 'none';
+                } else {
+                    if (prevBtn) prevBtn.style.display = 'flex';
+                    if (nextBtn) nextBtn.style.display = 'flex';
+                    if (dotsContainer) dotsContainer.style.display = 'flex';
+
+                    newSlides.forEach((_, idx) => {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot');
+                        if (idx === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => goToSlide(idx));
+                        dotsContainer.appendChild(dot);
+                    });
+                }
 
                 // Update dots list
                 dots = document.querySelectorAll('.dot');

@@ -2008,15 +2008,16 @@ button {
 }
 
 .quick-contact-actions {
-    margin-top: 40px;
+    margin-top: 45px;
 }
 
 .quick-contact-actions h3 {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--color-dark);
+    letter-spacing: -0.3px;
 }
 
 .action-buttons-flex {
@@ -2025,14 +2026,81 @@ button {
     gap: 16px;
 }
 
-.btn-instagram-btn {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: var(--color-white);
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
-.btn-instagram-btn:hover {
+/* Call Action Button */
+.btn-action.btn-call-action i {
+    color: #ef4444;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-action.btn-call-action:hover {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+    color: #ef4444;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+}
+
+.btn-action.btn-call-action:hover i {
+    transform: scale(1.15) rotate(-10deg);
+}
+
+/* WhatsApp Action Button */
+.btn-action.btn-whatsapp-action i {
+    color: #25d366;
+    font-size: 1.15rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-action.btn-whatsapp-action:hover {
+    border-color: #25d366;
+    background-color: #f0fdf4;
+    color: #16a34a;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-action.btn-whatsapp-action:hover i {
+    transform: scale(1.15);
+}
+
+/* Instagram Action Button */
+.btn-action.btn-instagram-action i {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.15rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-action.btn-instagram-action:hover {
+    border-color: #e1306c;
+    background-color: #fff1f2;
+    color: #db2777;
+    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-action.btn-instagram-action:hover i {
+    transform: scale(1.15) rotate(10deg);
 }
 
 /* Map Styling */
