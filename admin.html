@@ -1715,6 +1715,11 @@
             // Package Form Listener
             document.getElementById('packageForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const form = document.getElementById('packageForm');
+                const btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                btn.innerHTML = 'Uploading... <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
                 const formData = new FormData();
                 formData.append('title', document.getElementById('packageTitle').value);
                 formData.append('duration', document.getElementById('packageDuration').value);
@@ -1746,12 +1751,20 @@
                     }
                 } catch (err) {
                     showToast('Server error while saving package.', 'error');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Create Package <i class="bi bi-plus-circle"></i>';
                 }
             });
 
             // Gallery Form Listener
             document.getElementById('galleryForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const form = document.getElementById('galleryForm');
+                const btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                btn.innerHTML = 'Uploading... <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
                 const formData = new FormData();
                 formData.append('title', document.getElementById('galleryTitle').value);
                 formData.append('category', document.getElementById('galleryCategory').value);
@@ -1779,6 +1792,9 @@
                     }
                 } catch (err) {
                     showToast('Server error while uploading photo.', 'error');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Upload Photo <i class="bi bi-cloud-arrow-up-fill"></i>';
                 }
             });
 
