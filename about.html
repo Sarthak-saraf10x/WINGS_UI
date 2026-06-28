@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Wings Tours & Travels</title>
-    <meta name="description" content="Learn about Wings Tours & Travels. Founded in 2019 with a single car in Nagpur, we now provide premium transport and rentals all over India.">
+    <meta name="description" content="Learn about Wings Tours & Travels. Founded by Siddharth Gromker in 2019 with a single car in Nagpur, we now provide premium transport and rentals all over India.">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="About Us | Wings Tours & Travels">
@@ -23,29 +23,39 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* About Page Specific Styles */
+        /* Light Theme Styles for About Page */
         body {
-            background-color: #0b1120;
-            color: #f1f5f9;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        /* Hero Section Text Overrides if needed for light theme */
+        .hero-section {
+            background-color: #0f172a !important; /* Keep the hero section dark for premium look */
+            color: #ffffff;
+        }
+        .hero-section h1, 
+        .hero-section p, 
+        .hero-section span {
+            color: #ffffff;
         }
 
         /* Owner & Stats Card Section */
         .owner-section {
             padding: 80px 0;
-            background: linear-gradient(180deg, #0b1120 0%, rgba(15, 23, 42, 0.6) 100%);
+            background-color: #f8fafc;
         }
 
         .owner-card {
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 24px;
             overflow: hidden;
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            margin-top: -60px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            margin-top: -120px;
             position: relative;
             z-index: 10;
         }
@@ -99,7 +109,7 @@
         .owner-quote {
             font-size: 1.15rem;
             font-style: italic;
-            color: #e2e8f0;
+            color: #334155;
             margin-bottom: 30px;
             line-height: 1.6;
             border-left: 4px solid var(--color-secondary, #EF4444);
@@ -111,7 +121,7 @@
             content: '"';
             font-family: serif;
             font-size: 4rem;
-            color: rgba(239, 68, 68, 0.15);
+            color: rgba(239, 68, 68, 0.1);
             position: absolute;
             top: -20px;
             left: 10px;
@@ -125,8 +135,8 @@
         }
 
         .stat-item {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #f1f5f9;
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 16px;
             padding: 20px 15px;
             text-align: center;
@@ -136,13 +146,13 @@
         .stat-item:hover {
             transform: translateY(-5px);
             border-color: rgba(239, 68, 68, 0.2);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
 
         .stat-number {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--color-accent, #FFC857);
+            color: var(--color-primary, #0B3D91); /* Deep slate / red accent */
             display: block;
             margin-bottom: 5px;
             font-family: 'Poppins', sans-serif;
@@ -150,7 +160,7 @@
 
         .stat-label {
             font-size: 0.85rem;
-            color: #94a3b8;
+            color: #64748b;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -159,7 +169,7 @@
         /* Our Story Section */
         .story-section {
             padding: 100px 0;
-            background-color: #0b1120;
+            background-color: #ffffff;
             position: relative;
         }
 
@@ -174,7 +184,7 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 25px;
-            color: #ffffff;
+            color: #0f172a;
             position: relative;
         }
 
@@ -190,7 +200,7 @@
 
         .story-text p {
             font-size: 1.05rem;
-            color: #cbd5e1;
+            color: #334155;
             line-height: 1.8;
             margin-bottom: 20px;
         }
@@ -211,7 +221,7 @@
             top: 10px;
             bottom: 10px;
             width: 2px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.08);
         }
 
         .timeline-item {
@@ -225,20 +235,20 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #0b1120;
+            background: #ffffff;
             border: 3px solid var(--color-secondary, #EF4444);
             transition: all 0.3s ease;
         }
 
         .timeline-item:hover .timeline-badge {
             background: var(--color-secondary, #EF4444);
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
         }
 
         .timeline-year {
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--color-accent, #FFC857);
+            color: var(--color-secondary, #EF4444);
             margin-bottom: 5px;
             display: block;
         }
@@ -246,13 +256,13 @@
         .timeline-title {
             font-size: 1.05rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 5px;
         }
 
         .timeline-desc {
             font-size: 0.95rem;
-            color: #94a3b8;
+            color: #64748b;
             line-height: 1.5;
         }
 
@@ -264,8 +274,8 @@
             position: relative;
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
         }
 
         .story-graphic img {
@@ -277,14 +287,14 @@
 
         .story-experience-badge {
             position: absolute;
-            bottom: -30px;
-            right: -30px;
+            bottom: -20px;
+            right: -20px;
             background: var(--gradient-cta);
             padding: 30px;
             border-radius: 20px;
             text-align: center;
             color: white;
-            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.2);
             z-index: 10;
         }
 
@@ -308,7 +318,7 @@
         /* Vision & Mission Section */
         .vision-mission-section {
             padding: 100px 0 120px 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, #0b1120 100%);
+            background-color: #f8fafc;
         }
 
         .vision-mission-grid {
@@ -319,8 +329,8 @@
         }
 
         .vm-card {
-            background: rgba(30, 41, 59, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 24px;
             padding: 45px;
             transition: all 0.3s ease;
@@ -330,16 +340,15 @@
 
         .vm-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 200, 87, 0.2);
-            background: rgba(30, 41, 59, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(239, 68, 68, 0.15);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
         }
 
         .vm-icon-wrap {
             width: 60px;
             height: 60px;
             border-radius: 16px;
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(239, 68, 68, 0.08);
             color: var(--color-secondary, #EF4444);
             display: flex;
             align-items: center;
@@ -352,30 +361,30 @@
         .vm-card:hover .vm-icon-wrap {
             background: var(--color-secondary, #EF4444);
             color: #ffffff;
-            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
         }
 
         .vm-card.vision:hover .vm-icon-wrap {
-            background: var(--color-accent, #FFC857);
-            color: #0b1120;
-            box-shadow: 0 5px 15px rgba(255, 200, 87, 0.4);
+            background: var(--color-secondary, #EF4444);
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
         }
 
         .vm-card.vision .vm-icon-wrap {
-            background: rgba(255, 200, 87, 0.1);
-            color: var(--color-accent, #FFC857);
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--color-secondary, #EF4444);
         }
 
         .vm-title {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 15px;
         }
 
         .vm-desc {
             font-size: 1.05rem;
-            color: #cbd5e1;
+            color: #475569;
             line-height: 1.7;
         }
 
@@ -391,8 +400,8 @@
         }
 
         .goal-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 20px;
             padding: 30px;
             position: relative;
@@ -400,15 +409,15 @@
         }
 
         .goal-card:hover {
-            border-color: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.15);
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.05);
         }
 
         .goal-num {
             font-size: 2.5rem;
             font-weight: 800;
-            color: rgba(239, 68, 68, 0.1);
+            color: rgba(239, 68, 68, 0.06);
             position: absolute;
             top: 15px;
             right: 25px;
@@ -417,14 +426,14 @@
         }
 
         .goal-card:hover .goal-num {
-            color: rgba(239, 68, 68, 0.3);
+            color: rgba(239, 68, 68, 0.15);
             transform: scale(1.1);
         }
 
         .goal-title {
             font-size: 1.2rem;
             font-weight: 700;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -432,20 +441,24 @@
         }
 
         .goal-title i {
-            color: var(--color-accent, #FFC857);
+            color: var(--color-secondary, #EF4444);
             font-size: 1.1rem;
         }
 
         .goal-desc {
             font-size: 0.95rem;
-            color: #cbd5e1;
+            color: #475569;
             line-height: 1.6;
         }
 
         @media (max-width: 992px) {
+            .owner-section {
+                padding: 60px 0;
+            }
             .owner-card {
                 grid-template-columns: 1fr;
                 gap: 0;
+                margin-top: 0; /* Reset negative margin on tablet to prevent hero overlap */
             }
             .owner-image-wrap {
                 min-height: 380px;
@@ -464,6 +477,73 @@
             }
             .goals-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Fix cards info sliding out of window on small phone viewports */
+        @media (max-width: 576px) {
+            .owner-section {
+                padding: 40px 0;
+            }
+            .owner-card {
+                margin-top: 0; /* Reset negative margin on mobile to prevent hero overlap */
+                margin-left: 10px;
+                margin-right: 10px;
+                border-radius: 16px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            }
+            .owner-image-wrap {
+                min-height: 280px;
+            }
+            .owner-details-wrap {
+                padding: 30px 15px;
+            }
+            .owner-quote {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                padding-left: 15px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr; /* Switch to single column to prevent sliding out */
+                gap: 12px;
+                margin-top: 15px;
+            }
+            .stat-item {
+                padding: 15px 10px;
+                border-radius: 12px;
+            }
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            .story-section {
+                padding: 60px 0;
+            }
+            .story-timeline {
+                padding-left: 20px;
+            }
+            .story-timeline::before {
+                left: 4px;
+            }
+            .timeline-badge {
+                left: -24px;
+                width: 14px;
+                height: 14px;
+            }
+            .story-experience-badge {
+                position: static;
+                margin-top: 20px;
+                transform: none;
+                border-radius: 16px;
+                box-shadow: 0 10px 20px rgba(239, 68, 68, 0.15);
+            }
+            .vision-mission-section {
+                padding: 60px 0 80px 0;
+            }
+            .vm-card {
+                padding: 25px 20px;
+            }
+            .goal-card {
+                padding: 25px 20px;
             }
         }
     </style>
@@ -562,7 +642,7 @@
                 <div class="owner-image-wrap">
                     <img src="images/owner.png" alt="Founder of Wings Tours & Travels" class="owner-img">
                     <div class="owner-info-overlay">
-                        <h3 class="owner-name">Sarthak Kakde</h3>
+                        <h3 class="owner-name">Siddharth Gromker</h3>
                         <p class="owner-title">Founder & Managing Director</p>
                     </div>
                 </div>
