@@ -71,6 +71,8 @@
                 <li><a href="#why-choose-us" class="nav-link">About Us</a></li>
                 <li><a href="#packages" class="nav-link">Tour Packages</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#fleet" class="nav-link">Our Fleet</a></li>
+                <li><a href="#rental-rates" class="nav-link">Rental Rates</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#booking" class="nav-link">Contact</a></li>
             </ul>
@@ -269,6 +271,9 @@
                         </div>
                     </li>
                 </ul>
+                <div class="why-us-actions" style="margin-top: 30px;">
+                    <a href="about.html" class="btn btn-primary"><i class="bi bi-info-circle"></i> Learn More About Us</a>
+                </div>
             </div>
         </div>
     </section>
@@ -569,6 +574,51 @@
                     <i class="bi bi-plus-circle gallery-icon"></i>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ==================== OUR FLEET SECTION ==================== -->
+    <section id="fleet" class="section fleet-section bg-light">
+        <div class="section-header container">
+            <span class="section-tagline">Travel In Style</span>
+            <h2 class="section-title">Our Fleet</h2>
+            <p class="section-subtitle">Explore our well-maintained, sanitized, and premium range of vehicles curated
+                to suit every trip — whether it's a local ride, outstation journey, or a large group tour.</p>
+        </div>
+
+        <div class="fleet-grid container" id="fleetGrid">
+            <!-- Vehicle cards loaded dynamically -->
+            <div class="fleet-skeleton">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CAR RENTAL RATES SECTION ==================== -->
+    <section id="rental-rates" class="section rental-rates-section">
+        <div class="section-header container">
+            <span class="section-tagline">Transparent Pricing</span>
+            <h2 class="section-title">Car Rental Rates</h2>
+            <p class="section-subtitle">Affordable, all-inclusive rates with no hidden charges. Pick the perfect vehicle for your journey and travel in comfort.</p>
+        </div>
+
+        <div class="rental-grid container" id="rentalRatesGrid">
+            <!-- Up to 4 rental cards loaded dynamically -->
+            <div class="fleet-skeleton">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </div>
+
+        <!-- View All Button (shown when > 4 vehicles exist) -->
+        <div class="rental-view-all container" id="rentalViewAllWrap" style="display:none;">
+            <a href="tariffs.html" class="btn btn-solid-blue rental-view-all-btn">
+                View All Tariffs &amp; Rates <i class="bi bi-arrow-right-circle-fill"></i>
+            </a>
         </div>
     </section>
 

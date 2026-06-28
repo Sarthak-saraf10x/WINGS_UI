@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Wings Tours & Travels</title>
+    <meta name="description" content="Learn about Wings Tours & Travels. Founded in 2019 with a single car in Nagpur, we now provide premium transport and rentals all over India.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us | Wings Tours & Travels">
+    <meta property="og:description" content="Discover our journey since 2019, our fleet, happy clients, and vision to provide premium and safe travel solutions.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Permanent+Marker&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About Page Specific Styles */
+        body {
+            background-color: #0b1120;
+            color: #f1f5f9;
+        }
+
+        /* Owner & Stats Card Section */
+        .owner-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #0b1120 0%, rgba(15, 23, 42, 0.6) 100%);
+        }
+
+        .owner-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .owner-image-wrap {
+            position: relative;
+            min-height: 450px;
+        }
+
+        .owner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .owner-info-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0) 100%);
+            padding: 30px;
+            color: #ffffff;
+        }
+
+        .owner-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .owner-title {
+            font-size: 0.95rem;
+            color: var(--color-accent, #FFC857);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .owner-details-wrap {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .owner-quote {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            border-left: 4px solid var(--color-secondary, #EF4444);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .owner-quote::before {
+            content: '"';
+            font-family: serif;
+            font-size: 4rem;
+            color: rgba(239, 68, 68, 0.15);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(239, 68, 68, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-accent, #FFC857);
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Our Story Section */
+        .story-section {
+            padding: 100px 0;
+            background-color: #0b1120;
+            position: relative;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .story-content h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--color-secondary, #EF4444);
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .story-text p {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .story-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            padding-left: 30px;
+            margin-top: 40px;
+        }
+
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            left: -30px;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0b1120;
+            border: 3px solid var(--color-secondary, #EF4444);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-badge {
+            background: var(--color-secondary, #EF4444);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-accent, #FFC857);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .story-graphic {
+            position: relative;
+        }
+
+        .story-graphic-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .story-graphic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-experience-badge {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--gradient-cta);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.3);
+            z-index: 10;
+        }
+
+        .story-experience-num {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            line-height: 1;
+        }
+
+        .story-experience-lbl {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Vision & Mission Section */
+        .vision-mission-section {
+            padding: 100px 0 120px 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, #0b1120 100%);
+        }
+
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .vm-card {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 45px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 200, 87, 0.2);
+            background: rgba(30, 41, 59, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .vm-icon-wrap {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--color-secondary, #EF4444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .vm-card:hover .vm-icon-wrap {
+            background: var(--color-secondary, #EF4444);
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .vm-card.vision:hover .vm-icon-wrap {
+            background: var(--color-accent, #FFC857);
+            color: #0b1120;
+            box-shadow: 0 5px 15px rgba(255, 200, 87, 0.4);
+        }
+
+        .vm-card.vision .vm-icon-wrap {
+            background: rgba(255, 200, 87, 0.1);
+            color: var(--color-accent, #FFC857);
+        }
+
+        .vm-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .vm-desc {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* Goals Block */
+        .goals-header {
+            margin-bottom: 40px;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .goal-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .goal-card:hover {
+            border-color: rgba(239, 68, 68, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .goal-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(239, 68, 68, 0.1);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .goal-card:hover .goal-num {
+            color: rgba(239, 68, 68, 0.3);
+            transform: scale(1.1);
+        }
+
+        .goal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .goal-title i {
+            color: var(--color-accent, #FFC857);
+            font-size: 1.1rem;
+        }
+
+        .goal-desc {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .owner-card {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .owner-image-wrap {
+                min-height: 380px;
+            }
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .story-experience-badge {
+                bottom: 20px;
+                right: 20px;
+                padding: 20px;
+            }
+            .vision-mission-grid {
+                grid-template-columns: 1fr;
+            }
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <img src="images/Logo.png" alt="Wings Tours & Travels" class="preloader-logo">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20%26%20Travels,%20I%20would%20like%20to%20inquire%20about%20a%20booking."
+        class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us</span>
+    </a>
+
+    <!-- Mobile Navigation Backdrop Overlay -->
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html#home" class="logo">
+                <img src="images/Logo.png" alt="Wings Tours & Travels" class="logo-img">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="#owner-story" class="nav-link active">About Us</a></li>
+                <li><a href="index.html#packages" class="nav-link">Tour Packages</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#fleet" class="nav-link">Our Fleet</a></li>
+                <li><a href="tariffs.html" class="nav-link">Rental Rates</a></li>
+                <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#booking" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div class="hero-container container">
+            <div class="hero-content">
+                <div class="hero-title-group">
+                    <h1 class="hero-brush-text main-title">ABOUT</h1>
+                    <div class="hero-divider-text">
+                        <span class="line"></span>
+                        <span class="text">WINGS TOURS</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="hero-brush-text main-title">TRAVELS</div>
+                    <div class="hero-brush-underline">
+                        <svg viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0,5 Q50,10 100,5" stroke="#1E293B" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="hero-cursive-text">Your Trusted Travel Partner for Every Journey.</p>
+
+                <div class="hero-subtext-group">
+                    <p class="hero-alert-text">SINCE 2019. COMFORTABLE & SAFE TRAVELS.</p>
+                    <div class="hero-red-bar"></div>
+                    <p class="hero-description">
+                        Wings was created in 2019 starting from a single car in Nagpur. Today, we are available all over India with multiple premium vehicles, delivering trust and comfort.
+                    </p>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#owner-story" class="btn btn-primary"><i class="bi bi-arrow-down-circle"></i> DISCOVER OUR STORY</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Owner & Stats Section -->
+    <section class="owner-section" id="owner-story">
+        <div class="container">
+            <div class="owner-card">
+                <div class="owner-image-wrap">
+                    <img src="images/owner.png" alt="Founder of Wings Tours & Travels" class="owner-img">
+                    <div class="owner-info-overlay">
+                        <h3 class="owner-name">Sarthak Kakde</h3>
+                        <p class="owner-title">Founder & Managing Director</p>
+                    </div>
+                </div>
+                <div class="owner-details-wrap">
+                    <p class="owner-quote">
+                        "At Wings Tours & Travels, our vision has always been to build a legacy of trust. We started small, but our commitment to premium service, transparency, and safety has helped us scale to a nationwide network."
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">5,000+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Premium Fleets</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Destinations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <div class="story-text">
+                        <p>
+                            Wings Tours & Travels was created in 2019 with a humble beginning. Starting from a single sedan car operating locally in Nagpur, our focus was clear from day one: customer safety, vehicle cleanliness, and honest fares.
+                        </p>
+                        <p>
+                            Through tireless dedication and positive word-of-mouth from our corporate and leisure clients, we steadily expanded our footprints. We quickly established operating hubs in Pune, Mahabaleshwar, and Goa, building a network of premium rentals.
+                        </p>
+                        <p>
+                            Today, Wings is recognized as a trusted transportation provider available all over India, managing a diverse inventory of SUVs, luxury sedans, corporate coaches, and tempo travellers.
+                        </p>
+                    </div>
+                    
+                    <div class="story-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-badge"></div>
+                            <span class="timeline-year">2019</span>
+                            <h4 class="timeline-title">The First Spark</h4>
+                            <p class="timeline-desc">Launched operations in Nagpur with a single vehicle, offering local premium taxi rides.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-badge"></div>
+                            <span class="timeline-year">2021</span>
+                            <h4 class="timeline-title">Expanding the Horizon</h4>
+                            <p class="timeline-desc">Established secondary regional offices in Pune and launched dedicated Goa and Mahabaleshwar tour packages.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-badge"></div>
+                            <span class="timeline-year">2024 - Present</span>
+                            <h4 class="timeline-title">Pan-India Travel Network</h4>
+                            <p class="timeline-desc">Scaled our fleet to cover corporate luxury logistics, local-outstation rentals, and tourist corridors nationwide.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-graphic">
+                    <div class="story-graphic-wrapper">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800" alt="Travel and Journey">
+                        <div class="story-experience-badge">
+                            <span class="story-experience-num">7+</span>
+                            <span class="story-experience-lbl">Years of Journey</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="vision-mission-section">
+        <div class="container">
+            <div class="vision-mission-grid">
+                <div class="vm-card vision">
+                    <div class="vm-icon-wrap">
+                        <i class="bi bi-eye-fill"></i>
+                    </div>
+                    <h3 class="vm-title">Our Vision</h3>
+                    <p class="vm-desc">
+                        To become India's most trusted, customer-centric mobility provider by continuously upgrading our fleets, introducing smart transit technologies, and upholding our trademark hospitality on every single trip.
+                    </p>
+                </div>
+                
+                <div class="vm-card mission">
+                    <div class="vm-icon-wrap">
+                        <i class="bi bi-compass-fill"></i>
+                    </div>
+                    <h3 class="vm-title">Our Mission</h3>
+                    <p class="vm-desc">
+                        To offer safe, highly sanitized, comfortable, and affordable luxury travels. We aim to take the stress out of travel planning by offering complete transparency, absolute reliability, and professional chauffeur services.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Goals Sub-Section -->
+            <div class="goals-header text-center">
+                <span class="section-tagline">Looking Ahead</span>
+                <h2 class="section-title">Our Future Goals</h2>
+                <p class="section-subtitle">We have clear benchmarks established to guide our operations and service standards as we grow.</p>
+            </div>
+            
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <span class="goal-num">01</span>
+                    <h4 class="goal-title"><i class="bi bi-shield-check"></i> Safety Standards</h4>
+                    <p class="goal-desc">Targeting a 100% incident-free travel record. We are incorporating real-time telemetry, advanced GPS monitoring, and mandatory driver rest schedules for safety.</p>
+                </div>
+                <div class="goal-card">
+                    <span class="goal-num">02</span>
+                    <h4 class="goal-title"><i class="bi bi-leaf"></i> Sustainable Fleet</h4>
+                    <p class="goal-desc">We plan to transition 30% of our active vehicles to eco-friendly hybrid and electric models by 2028, reducing emissions on tourist routes.</p>
+                </div>
+                <div class="goal-card">
+                    <span class="goal-num">03</span>
+                    <h4 class="goal-title"><i class="bi bi-globe-asia-australia"></i> Network Growth</h4>
+                    <p class="goal-desc">Expanding local booking points to cover 50+ secondary towns and tier-2 tourist destinations across northern and southern India by the end of next year.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-top container">
+            <!-- Brand -->
+            <div class="footer-col brand-col">
+                <a href="#" class="footer-logo">
+                    <i class="bi bi-send-fill logo-wings"></i>
+                    <span>WINGS<span class="logo-highlight">TOURS</span></span>
+                </a>
+                <p class="footer-desc">WINGS TOURS & TRAVELS is your premium transportation and logistics solution provider, facilitating comfortable journeys to all major tourist corridors with seasoned chauffeurs and pristine fleets.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/wings_travelss" target="_blank" rel="noopener" aria-label="Follow us on Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://wa.me/918855052083" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="tel:8855052083" aria-label="Call Wings Travels"><i class="bi bi-telephone-fill"></i></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col links-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="index.html#packages">Tour Packages</a></li>
+                    <li><a href="index.html#gallery">Tour Gallery</a></li>
+                    <li><a href="index.html#reviews">Guest Reviews</a></li>
+                    <li><a href="index.html#booking">Book Online</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col links-col">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="index.html#services">Local Taxi Rental</a></li>
+                    <li><a href="index.html#services">Outstation Taxi</a></li>
+                    <li><a href="index.html#services">Hourly Rental</a></li>
+                    <li><a href="index.html#services">Picnic Trips</a></li>
+                    <li><a href="index.html#services">Bus & Tempo Rental</a></li>
+                    <li><a href="index.html#services">Tour Packages</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Details -->
+            <div class="footer-col contact-col">
+                <h3>Contact Details</h3>
+                <ul class="footer-contact-list">
+                    <li>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Pune, Mahabaleshwar & Goa Regional Hubs, India</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>
+                            <a href="tel:8855052083">8855052083</a><br>
+                            <a href="tel:9921874504">9921874504</a>
+                        </span>
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope-fill"></i>
+                        <span>booking@wingstravels.co.in</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-instagram"></i>
+                        <span><a href="https://instagram.com/wings_travelss" target="_blank" rel="noopener">@wings_travelss</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container container">
+                <p>WINGS TOURS & TRAVELS &copy; 2019</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Quick Contact Bar -->
+    <div class="mobile-bottom-bar" id="mobileBottomBar">
+        <a href="tel:8855052083" class="mobile-bottom-item call-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span>Call Now</span>
+        </a>
+        <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20%26%20Travels,%20I%20would%20like%20to%20inquire%20about%20a%20booking."
+            target="_blank" rel="noopener" class="mobile-bottom-item whatsapp-item">
+            <i class="bi bi-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="index.html#booking" class="mobile-bottom-item book-item">
+            <i class="bi bi-calendar-check-fill"></i>
+            <span>Book Now</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

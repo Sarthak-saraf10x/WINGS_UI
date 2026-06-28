@@ -1189,4 +1189,316 @@ ${message ? `- *Message:* ${message}` : ''}`;
     fetchDynamicPackages();
     fetchDynamicGallery();
     fetchDynamicReviews();
+    fetchFleetVehicles();
+    fetchRentalRates();
 });
+
+/* ==========================================================================
+   OUR FLEET — Dynamic Vehicle Loader
+   ========================================================================== */
+
+// Example / default fleet vehicles (shown when DB is empty or offline)
+const EXAMPLE_FLEET = [
+    {
+        name: 'Toyota Innova Crysta',
+        type: 'Innova',
+        capacity: 7,
+        fuelType: 'Diesel',
+        transmission: 'Manual',
+        ac: true,
+        features: 'GPS Tracking, Spacious Legroom, Charging Ports',
+        pricePerKm: '₹14/km',
+        imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800'
+    },
+    {
+        name: 'Maruti Suzuki Ertiga',
+        type: 'Ertiga',
+        capacity: 7,
+        fuelType: 'CNG',
+        transmission: 'Manual',
+        ac: true,
+        features: 'Music System, Comfortable Seating, Family Friendly',
+        pricePerKm: '₹12/km',
+        imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800'
+    },
+    {
+        name: 'Swift Dzire Sedan',
+        type: 'Sedan',
+        capacity: 4,
+        fuelType: 'Petrol',
+        transmission: 'Manual',
+        ac: true,
+        features: 'Fuel Efficient, City Rides, Airport Transfer',
+        pricePerKm: '₹10/km',
+        imageUrl: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=800'
+    },
+    {
+        name: 'Force Tempo Traveller 17',
+        type: 'Tempo Traveller',
+        capacity: 17,
+        fuelType: 'Diesel',
+        transmission: 'Manual',
+        ac: true,
+        features: 'Push-back Seats, Luggage Rack, Large Windows',
+        pricePerKm: '₹22/km',
+        imageUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800'
+    },
+    {
+        name: 'Toyota Fortuner',
+        type: 'SUV',
+        capacity: 7,
+        fuelType: 'Diesel',
+        transmission: 'Automatic',
+        ac: true,
+        features: 'Luxury Interior, 4x4 Drive, Premium Sound System',
+        pricePerKm: '₹18/km',
+        imageUrl: 'https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?q=80&w=800'
+    },
+    {
+        name: 'Volvo AC Bus 45-Seater',
+        type: 'Luxury Bus',
+        capacity: 45,
+        fuelType: 'Diesel',
+        transmission: 'Automatic',
+        ac: true,
+        features: 'Recliner Seats, Infotainment, Overhead Storage',
+        pricePerKm: '₹45/km',
+        imageUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800'
+    }
+];
+
+async function fetchFleetVehicles() {
+    const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000/api'
+        : 'https://wings-backend-jada.onrender.com/api';
+
+    const fleetGrid = document.getElementById('fleetGrid');
+    if (!fleetGrid) return;
+
+    try {
+        const res = await fetch(`${API_URL}/vehicles`);
+        const data = await res.json();
+
+        if (data.success && data.data && data.data.length > 0) {
+            // Real vehicles from DB — render them
+            renderFleetCards(data.data);
+        } else {
+            // DB empty — always show example fleet so client sees content
+            renderFleetCards(EXAMPLE_FLEET);
+        }
+    } catch (err) {
+        // API offline — show example fleet
+        console.warn('Fleet API unavailable. Showing example vehicles.');
+        renderFleetCards(EXAMPLE_FLEET);
+    }
+}
+
+function renderFleetCards(vehicles) {
+    const fleetGrid = document.getElementById('fleetGrid');
+    if (!fleetGrid) return;
+    fleetGrid.innerHTML = '';
+
+    vehicles.forEach(v => {
+        const card = document.createElement('div');
+        card.className = 'fleet-card reveal-slide-up';
+
+        const featuresArr = (v.features || '').split(',').map(f => f.trim()).filter(Boolean);
+        const featurePills = featuresArr.map(f =>
+            `<span class="fleet-feature-pill"><i class="bi bi-check-circle-fill"></i>${f}</span>`
+        ).join('');
+
+        card.innerHTML = `
+            <div class="fleet-card-img-wrap">
+                <img src="${v.imageUrl}" alt="${v.name}" class="fleet-card-img" loading="lazy">
+                <div class="fleet-card-badge">${v.type}</div>
+            </div>
+            <div class="fleet-card-body">
+                <h3 class="fleet-card-name">${v.name}</h3>
+                <div class="fleet-card-specs">
+                    <div class="fleet-spec-item">
+                        <i class="bi bi-people-fill"></i>
+                        <span>${v.capacity} Seater</span>
+                    </div>
+                    <div class="fleet-spec-item">
+                        <i class="bi bi-fuel-pump-fill"></i>
+                        <span>${v.fuelType}</span>
+                    </div>
+                    <div class="fleet-spec-item">
+                        <i class="bi bi-gear-fill"></i>
+                        <span>${v.transmission}</span>
+                    </div>
+                    <div class="fleet-spec-item">
+                        <i class="bi bi-snow2"></i>
+                        <span>${v.ac ? 'AC' : 'Non-AC'}</span>
+                    </div>
+                </div>
+                ${featurePills ? `<div class="fleet-feature-pills">${featurePills}</div>` : ''}
+                <div class="fleet-card-footer">
+                    ${v.pricePerKm ? `<span class="fleet-price"><i class="bi bi-tag-fill"></i> ${v.pricePerKm}</span>` : ''}
+                    <a href="#booking" class="btn btn-primary btn-sm fleet-book-btn">Book Now <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        `;
+        fleetGrid.appendChild(card);
+    });
+
+    // Re-run reveal observer on newly added cards
+    const newRevealEls = fleetGrid.querySelectorAll('.reveal-slide-up');
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    newRevealEls.forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   CAR RENTAL RATES — Dynamic Loader (homepage shows max 4)
+   ========================================================================== */
+
+const EXAMPLE_RENTALS = [
+    {
+        name: 'Swift Dzire Sedan',
+        type: 'Sedan',
+        capacity: 4,
+        ac: true,
+        ratePerKm: '₹11/km',
+        ratePerDay: '₹2,500/day',
+        ratePerHour: '₹300/hr',
+        minFare: '₹500 minimum',
+        features: 'Fuel Efficient, Comfortable, Airport Transfers',
+        imageUrl: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=800'
+    },
+    {
+        name: 'Toyota Innova Crysta',
+        type: 'Innova',
+        capacity: 7,
+        ac: true,
+        ratePerKm: '₹14/km',
+        ratePerDay: '₹4,000/day',
+        ratePerHour: '₹450/hr',
+        minFare: '₹700 minimum',
+        features: 'Spacious, GPS Tracking, Charging Ports',
+        imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800'
+    },
+    {
+        name: 'Maruti Suzuki Ertiga',
+        type: 'Ertiga',
+        capacity: 7,
+        ac: true,
+        ratePerKm: '₹12/km',
+        ratePerDay: '₹3,200/day',
+        ratePerHour: '₹380/hr',
+        minFare: '₹600 minimum',
+        features: 'Family Friendly, CNG, Music System',
+        imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800'
+    },
+    {
+        name: 'Toyota Fortuner',
+        type: 'SUV',
+        capacity: 7,
+        ac: true,
+        ratePerKm: '₹18/km',
+        ratePerDay: '₹6,500/day',
+        ratePerHour: '₹750/hr',
+        minFare: '₹1,200 minimum',
+        features: 'Luxury Interior, 4x4 Drive, Premium Audio',
+        imageUrl: 'https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?q=80&w=800'
+    },
+    {
+        name: 'Force Tempo Traveller',
+        type: 'Tempo Traveller',
+        capacity: 17,
+        ac: true,
+        ratePerKm: '₹22/km',
+        ratePerDay: '₹8,000/day',
+        ratePerHour: '₹900/hr',
+        minFare: '₹2,000 minimum',
+        features: 'Push-back Seats, Luggage Rack, Group Travel',
+        imageUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800'
+    },
+    {
+        name: 'Volvo AC Bus 45-Seater',
+        type: 'Luxury Bus',
+        capacity: 45,
+        ac: true,
+        ratePerKm: '₹45/km',
+        ratePerDay: '₹18,000/day',
+        ratePerHour: '',
+        minFare: '₹5,000 minimum',
+        features: 'Recliner Seats, Infotainment, Events & Weddings',
+        imageUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800'
+    }
+];
+
+async function fetchRentalRates() {
+    const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000/api'
+        : 'https://wings-backend-jada.onrender.com/api';
+
+    const grid = document.getElementById('rentalRatesGrid');
+    if (!grid) return;
+
+    let vehicles = [];
+    try {
+        const res = await fetch(`${API_URL}/rentals`);
+        const data = await res.json();
+        vehicles = (data.success && data.data && data.data.length > 0) ? data.data : EXAMPLE_RENTALS;
+    } catch (e) {
+        vehicles = EXAMPLE_RENTALS;
+    }
+
+    renderRentalCards(vehicles);
+}
+
+function renderRentalCards(vehicles, containerId = 'rentalRatesGrid', limit = 4) {
+    const grid = document.getElementById(containerId);
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    const isHomepage = limit === 4;
+    const shown = isHomepage ? vehicles.slice(0, 4) : vehicles;
+
+    shown.forEach(v => {
+        const card = document.createElement('div');
+        card.className = 'rental-card reveal-slide-up';
+
+        card.innerHTML = `
+            <div class="rental-card-img-wrap">
+                <img src="${v.imageUrl}" alt="${v.name}" class="rental-card-img" loading="lazy">
+                <div class="rental-card-type-badge">${v.type}</div>
+                <div class="rental-card-capacity"><i class="bi bi-people-fill"></i> ${v.capacity} Seater</div>
+            </div>
+            <div class="rental-card-body">
+                <h3 class="rental-card-name">${v.name}</h3>
+                <div class="rental-rates-grid">
+                    ${v.ratePerKm ? `<div class="rental-rate-item"><span class="rental-rate-label"><i class="bi bi-map"></i> Per KM</span><span class="rental-rate-value">${v.ratePerKm}</span></div>` : ''}
+                    ${v.ratePerDay ? `<div class="rental-rate-item"><span class="rental-rate-label"><i class="bi bi-calendar3"></i> Per Day</span><span class="rental-rate-value">${v.ratePerDay}</span></div>` : ''}
+                    ${v.ratePerHour ? `<div class="rental-rate-item"><span class="rental-rate-label"><i class="bi bi-clock"></i> Per Hour</span><span class="rental-rate-value">${v.ratePerHour}</span></div>` : ''}
+                    ${v.minFare ? `<div class="rental-rate-item rental-min-fare"><span class="rental-rate-label"><i class="bi bi-info-circle"></i> Min Fare</span><span class="rental-rate-value">${v.minFare}</span></div>` : ''}
+                </div>
+                ${v.ac ? '<div class="rental-ac-badge"><i class="bi bi-snow2"></i> Air Conditioned</div>' : ''}
+                <a href="tariffs.html" class="btn btn-primary btn-sm rental-book-btn">Rent This Car <i class="bi bi-arrow-right"></i></a>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    // Show "View All" button if more than 4 vehicles
+    if (isHomepage && vehicles.length > 4) {
+        const wrap = document.getElementById('rentalViewAllWrap');
+        if (wrap) wrap.style.display = 'flex';
+    }
+
+    // Animate cards in
+    const cards = grid.querySelectorAll('.reveal-slide-up');
+    const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); }
+        });
+    }, { threshold: 0.08 });
+    cards.forEach(c => obs.observe(c));
+}

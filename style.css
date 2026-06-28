@@ -2712,3 +2712,378 @@ button {
         flex-direction: column;
     }
 }
+
+/* ==========================================================================
+   OUR FLEET SECTION
+   ========================================================================== */
+
+.fleet-section {
+    background: linear-gradient(180deg, #F1F5F9 0%, #ffffff 100%);
+}
+
+/* Fleet Grid */
+.fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 28px;
+}
+
+/* Skeleton loader */
+.fleet-skeleton {
+    display: contents;
+}
+
+.skeleton-card {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 18px;
+    height: 380px;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Fleet Card */
+.fleet-card {
+    background: var(--color-white);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.07);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.fleet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.14);
+}
+
+/* Card Image */
+.fleet-card-img-wrap {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    background-color: #e2e8f0;
+    flex-shrink: 0;
+}
+
+.fleet-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.fleet-card:hover .fleet-card-img {
+    transform: scale(1.06);
+}
+
+/* Type Badge */
+.fleet-card-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.4);
+}
+
+/* Card Body */
+.fleet-card-body {
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 14px;
+}
+
+.fleet-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.3;
+}
+
+/* Spec Grid */
+.fleet-card-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.fleet-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.83rem;
+    color: var(--color-light);
+    font-weight: 500;
+    background: #F8FAFC;
+    padding: 7px 11px;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+}
+
+.fleet-spec-item i {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Feature Pills */
+.fleet-feature-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.fleet-feature-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(239, 68, 68, 0.06);
+    color: var(--color-secondary);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.fleet-feature-pill i {
+    font-size: 0.7rem;
+}
+
+/* Card Footer */
+.fleet-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+.fleet-price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.fleet-price i {
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+}
+
+.fleet-book-btn {
+    padding: 9px 18px;
+    font-size: 0.82rem;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+}
+
+/* Responsive Fleet */
+@media (max-width: 768px) {
+    .fleet-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 18px;
+    }
+
+    .fleet-card-img-wrap {
+        height: 185px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fleet-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skeleton-card {
+        height: 320px;
+    }
+}
+
+/* ==========================================================================
+   CAR RENTAL RATES SECTION STYLES
+   ========================================================================== */
+.rental-rates-section {
+    background-color: var(--color-bg-dark, #0b1120);
+    padding: 80px 0;
+}
+
+.rental-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.rental-card {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.rental-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.rental-card-img-wrap {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.rental-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rental-card:hover .rental-card-img {
+    transform: scale(1.05);
+}
+
+.rental-card-type-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--color-secondary, #ef4444);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.rental-card-capacity {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(15, 23, 42, 0.85);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rental-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.rental-card-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 18px;
+}
+
+.rental-rates-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+    background: rgba(15, 23, 42, 0.25);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.rental-rate-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rental-rate-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.rental-rate-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rental-rate-label i {
+    color: var(--color-accent, #ffc857);
+}
+
+.rental-rate-value {
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+.rental-min-fare .rental-rate-value {
+    color: var(--color-accent, #ffc857);
+}
+
+.rental-ac-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+    font-weight: 600;
+}
+
+.rental-book-btn {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+.rental-view-all {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Tariffs & Rates | Wings Tours & Travels</title>
+    <meta name="description" content="View our complete car rental tariffs, per day, per km, and hourly rates. Book premium cabs, sedans, SUVs, and buses for outstation and local trips at affordable rates.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Car Rental Tariffs & Rates | Wings Tours & Travels">
+    <meta property="og:description" content="View our complete car rental tariffs, per day, per km, and hourly rates. Book premium cabs, sedans, SUVs, and buses.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Permanent+Marker&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Tariffs Page Specific Styles */
+        body {
+            background-color: #0b1120;
+            color: #f1f5f9;
+        }
+
+        .specific-cta-section {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.6));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 60px auto 80px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .specific-cta-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .specific-cta-text {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            font-size: 1.05rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba56;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        /* Booking Form Styles for Tariffs */
+        .tariffs-booking-container {
+            max-width: 800px;
+            margin: 0 auto 80px auto;
+        }
+
+        .booking-card-tariffs {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .booking-card-tariffs h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .booking-card-tariffs form input,
+        .booking-card-tariffs form select,
+        .booking-card-tariffs form textarea {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .booking-card-tariffs form input:focus,
+        .booking-card-tariffs form select:focus,
+        .booking-card-tariffs form textarea:focus {
+            border-color: var(--color-secondary, #EF4444);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        .booking-card-tariffs .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .booking-card-tariffs .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .booking-card-tariffs .form-group {
+            margin-bottom: 20px;
+        }
+
+        .booking-card-tariffs label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #94a3b8;
+            letter-spacing: 0.3px;
+        }
+
+        .booking-card-tariffs button[type="submit"] {
+            width: 100%;
+            background: var(--gradient-cta);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+            margin-top: 10px;
+        }
+
+        .booking-card-tariffs button[type="submit"]:hover {
+            background: var(--gradient-gold);
+            color: var(--color-dark);
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-2px);
+        }
+
+        .booking-card-tariffs button[type="submit"]:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .invalid input, .invalid select {
+            border-color: #ef4444 !important;
+        }
+
+        .invalid .form-error {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .booking-card-tariffs .form-row-2,
+            .booking-card-tariffs .form-row-3 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .booking-card-tariffs {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <img src="images/Logo.png" alt="Wings Tours & Travels" class="preloader-logo">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20%26%20Travels,%20I%20would%20like%20to%20inquire%20about%20a%20booking."
+        class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us</span>
+    </a>
+
+    <!-- Mobile Navigation Backdrop Overlay -->
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html#home" class="logo">
+                <img src="images/Logo.png" alt="Wings Tours & Travels" class="logo-img">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#why-choose-us" class="nav-link">About Us</a></li>
+                <li><a href="index.html#packages" class="nav-link">Tour Packages</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#fleet" class="nav-link">Our Fleet</a></li>
+                <li><a href="index.html#rental-rates" class="nav-link active">Rental Rates</a></li>
+                <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#booking" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div class="hero-container container">
+            <div class="hero-content">
+                <div class="hero-title-group">
+                    <h1 class="hero-brush-text main-title">CAR</h1>
+                    <div class="hero-divider-text">
+                        <span class="line"></span>
+                        <span class="text">RENTAL TARIFFS</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="hero-brush-text main-title">RATES</div>
+                    <div class="hero-brush-underline">
+                        <svg viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0,5 Q50,10 100,5" stroke="#1E293B" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="hero-cursive-text">Comfortable. Sanitized. Chauffeur Driven.</p>
+
+                <div class="hero-subtext-group">
+                    <p class="hero-alert-text">BEST RENTAL RATES. NO HIDDEN CHARGES.</p>
+                    <div class="hero-red-bar"></div>
+                    <p class="hero-description">
+                        Explore our complete range of rental options and compare prices across all classes of travel. Select the perfect car for your journey and get transparent pricing.
+                    </p>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#rentFormSec" class="btn btn-primary"><i class="bi bi-calendar-check-fill"></i> BOOK RENTAL CAB</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Rental rates Grid -->
+    <section class="section container" id="rental-rates" style="padding-top: 80px;">
+        <div class="section-header text-center container">
+            <span class="section-tagline">Affordable Rides</span>
+            <h2 class="section-title">Our Rental Tariff Card</h2>
+            <p class="section-subtitle">Compare local, outstation, and hourly rates for our entire range of hatchbacks, sedans, SUVs, and luxury coaches.</p>
+        </div>
+        <div class="rental-grid" id="fullTariffsGrid">
+            <!-- Full loader spinner -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 60px 0;">
+                <div class="loader" style="margin: 0 auto; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: var(--color-secondary, #EF4444); animation: spin 1s ease infinite;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Looking for something specific / WhatsApp CTA -->
+    <section class="container">
+        <div class="specific-cta-section">
+            <div class="specific-cta-title">Looking for something specific?</div>
+            <p class="specific-cta-text">Need self-drive options, luxury cars for weddings, customized long-term monthly rentals, or corporate fleet bookings? Chat directly with us on WhatsApp for custom rates.</p>
+            <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20and%20Travels%2C%20I%20am%20looking%20for%20a%20specific%20car%20rental%2Ftariff%20details." target="_blank" rel="noopener" class="btn-whatsapp">
+                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Rent a Car Form Section -->
+    <section class="container tariffs-booking-container" id="rentFormSec">
+        <div class="booking-card-tariffs">
+            <h2>Rent A Car Online</h2>
+            <form id="rentalBookingForm" novalidate>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="rentName">Full Name *</label>
+                        <input type="text" id="rentName" required placeholder="Your full name">
+                        <span class="form-error">Full name is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="rentPhone">Phone Number *</label>
+                        <input type="tel" id="rentPhone" required pattern="^[0-9]{10}$" placeholder="10-digit mobile number">
+                        <span class="form-error">Please enter a valid 10-digit number.</span>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="rentPickup">Pickup Location *</label>
+                        <input type="text" id="rentPickup" required placeholder="Pickup address, hotel, or airport">
+                        <span class="form-error">Pickup location is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="rentDestination">Destination Location *</label>
+                        <input type="text" id="rentDestination" required placeholder="Drop location or city name">
+                        <span class="form-error">Destination is required.</span>
+                    </div>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="rentDate">Rental Start Date *</label>
+                        <input type="date" id="rentDate" required>
+                        <span class="form-error">Start date is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="rentVehicle">Preferred Vehicle *</label>
+                        <select id="rentVehicle" required>
+                            <option value="" disabled selected>Select Car / Bus</option>
+                            <option value="Sedan (Swift Dzire)">Swift Dzire (Sedan)</option>
+                            <option value="Innova Crysta">Toyota Innova Crysta</option>
+                            <option value="Maruti Ertiga">Maruti Ertiga</option>
+                            <option value="Toyota Fortuner">Toyota Fortuner</option>
+                            <option value="Tempo Traveller">Tempo Traveller</option>
+                            <option value="Luxury Bus">Volvo / Luxury Bus</option>
+                        </select>
+                        <span class="form-error">Please select a vehicle.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="rentDays">Duration (Days) *</label>
+                        <input type="number" id="rentDays" min="1" max="60" required placeholder="e.g. 2">
+                        <span class="form-error">Please enter booking duration.</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rentMessage">Special Instructions (Optional)</label>
+                    <textarea id="rentMessage" rows="3" placeholder="Tell us about special requests, multi-city route, flight timings, or self-drive preference..."></textarea>
+                </div>
+
+                <button type="submit" id="rentSubmitBtn">Submit Rental Enquiry <i class="bi bi-send-fill" style="margin-left:6px;"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-top container">
+            <!-- Brand -->
+            <div class="footer-col brand-col">
+                <a href="#" class="footer-logo">
+                    <i class="bi bi-send-fill logo-wings"></i>
+                    <span>WINGS<span class="logo-highlight">TOURS</span></span>
+                </a>
+                <p class="footer-desc">WINGS TOURS & TRAVELS is your premium transportation and logistics solution provider, facilitating comfortable journeys to all major tourist corridors with seasoned chauffeurs and pristine fleets.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/wings_travelss" target="_blank" rel="noopener" aria-label="Follow us on Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://wa.me/918855052083" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="tel:8855052083" aria-label="Call Wings Travels"><i class="bi bi-telephone-fill"></i></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col links-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="index.html#packages">Tour Packages</a></li>
+                    <li><a href="index.html#gallery">Tour Gallery</a></li>
+                    <li><a href="index.html#reviews">Guest Reviews</a></li>
+                    <li><a href="index.html#booking">Book Online</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col links-col">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="index.html#services">Local Taxi Rental</a></li>
+                    <li><a href="index.html#services">Outstation Taxi</a></li>
+                    <li><a href="index.html#services">Hourly Rental</a></li>
+                    <li><a href="index.html#services">Picnic Trips</a></li>
+                    <li><a href="index.html#services">Bus & Tempo Rental</a></li>
+                    <li><a href="index.html#services">Tour Packages</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Details -->
+            <div class="footer-col contact-col">
+                <h3>Contact Details</h3>
+                <ul class="footer-contact-list">
+                    <li>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Pune, Mahabaleshwar & Goa Regional Hubs, India</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>
+                            <a href="tel:8855052083">8855052083</a><br>
+                            <a href="tel:9921874504">9921874504</a>
+                        </span>
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope-fill"></i>
+                        <span>booking@wingstravels.co.in</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-instagram"></i>
+                        <span><a href="https://instagram.com/wings_travelss" target="_blank" rel="noopener">@wings_travelss</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container container">
+                <p>WINGS TOURS & TRAVELS &copy; 2019</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Quick Contact Bar -->
+    <div class="mobile-bottom-bar" id="mobileBottomBar">
+        <a href="tel:8855052083" class="mobile-bottom-item call-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span>Call Now</span>
+        </a>
+        <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20%26%20Travels,%20I%20would%20like%20to%20inquire%20about%20a%20booking."
+            target="_blank" rel="noopener" class="mobile-bottom-item whatsapp-item">
+            <i class="bi bi-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="#rentFormSec" class="mobile-bottom-item book-item" id="mobileBookBtn">
+            <i class="bi bi-calendar-check-fill"></i>
+            <span>Book Now</span>
+        </a>
+    </div>
+
+    <!-- Load Dynamic Content & Submit Handler -->
+    <script>
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:5000/api'
+            : 'https://wings-backend-jada.onrender.com/api';
+
+        const FALLBACK_RENTALS = [
+            {
+                name: 'Swift Dzire Sedan',
+                type: 'Sedan',
+                capacity: 4,
+                ac: true,
+                ratePerKm: '₹11/km',
+                ratePerDay: '₹2,500/day',
+                ratePerHour: '₹300/hr',
+                minFare: '₹500 minimum',
+                imageUrl: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=800'
+            },
+            {
+                name: 'Toyota Innova Crysta',
+                type: 'Innova',
+                capacity: 7,
+                ac: true,
+                ratePerKm: '₹14/km',
+                ratePerDay: '₹4,000/day',
+                ratePerHour: '₹450/hr',
+                minFare: '₹700 minimum',
+                imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800'
+            },
+            {
+                name: 'Maruti Suzuki Ertiga',
+                type: 'Ertiga',
+                capacity: 7,
+                ac: true,
+                ratePerKm: '₹12/km',
+                ratePerDay: '₹3,200/day',
+                ratePerHour: '₹380/hr',
+                minFare: '₹600 minimum',
+                imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800'
+            },
+            {
+                name: 'Toyota Fortuner',
+                type: 'SUV',
+                capacity: 7,
+                ac: true,
+                ratePerKm: '₹18/km',
+                ratePerDay: '₹6,500/day',
+                ratePerHour: '₹750/hr',
+                minFare: '₹1,200 minimum',
+                imageUrl: 'https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?q=80&w=800'
+            },
+            {
+                name: 'Force Tempo Traveller',
+                type: 'Tempo Traveller',
+                capacity: 17,
+                ac: true,
+                ratePerKm: '₹22/km',
+                ratePerDay: '₹8,000/day',
+                ratePerHour: '₹900/hr',
+                minFare: '₹2,000 minimum',
+                imageUrl: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800'
+            },
+            {
+                name: 'Volvo AC Bus 45-Seater',
+                type: 'Luxury Bus',
+                capacity: 45,
+                ac: true,
+                ratePerKm: '₹45/km',
+                ratePerDay: '₹18,000/day',
+                minFare: '₹5,000 minimum',
+                imageUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800'
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllTariffs();
+            setupFormHandler();
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            const rentDateEl = document.getElementById('rentDate');
+            if (rentDateEl) rentDateEl.min = today;
+        });
+
+        async function loadAllTariffs() {
+            const grid = document.getElementById('fullTariffsGrid');
+            try {
+                const response = await fetch(`${API_BASE}/rentals`);
+                const data = await response.json();
+                
+                const vehicles = (data.success && data.data && data.data.length > 0) 
+                    ? data.data 
+                    : FALLBACK_RENTALS;
+                
+                renderTariffs(vehicles, grid);
+                populateVehicleDropdown(vehicles);
+            } catch (err) {
+                renderTariffs(FALLBACK_RENTALS, grid);
+                populateVehicleDropdown(FALLBACK_RENTALS);
+            }
+        }
+
+        function renderTariffs(vehicles, grid) {
+            grid.innerHTML = '';
+            vehicles.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'rental-card';
+                card.style.opacity = '1';
+
+                card.innerHTML = `
+                    <div class="rental-card-img-wrap">
+                        <img src="${v.imageUrl}" alt="${v.name}" class="rental-card-img">
+                        <div class="rental-card-type-badge">${v.type}</div>
+                        <div class="rental-card-capacity"><i class="bi bi-people-fill"></i> ${v.capacity} Seater</div>
+                    </div>
+                    <div class="rental-card-body">
+                        <h3 class="rental-card-name">${v.name}</h3>
+                        <div class="rental-rates-grid">
+                            ${v.ratePerKm ? `<div class="rental-rate-item"><span class="rental-rate-label"><i class="bi bi-map"></i> Per KM</span><span class="rental-rate-value">${v.ratePerKm}</span></div>` : ''}
+                            ${v.ratePerDay ? `<div class="rental-rate-item"><span class="rental-rate-label"><i class="bi bi-calendar3"></i> Per Day</span><span class="rental-rate-value">${v.ratePerDay}</span></div>` : ''}
+                            ${v.ratePerHour ? `<div class="rental-rate-item"><span class="rental-rate-label"><i class="bi bi-clock"></i> Per Hour</span><span class="rental-rate-value">${v.ratePerHour}</span></div>` : ''}
+                            ${v.minFare ? `<div class="rental-rate-item rental-min-fare"><span class="rental-rate-label"><i class="bi bi-info-circle"></i> Min Fare</span><span class="rental-rate-value">${v.minFare}</span></div>` : ''}
+                        </div>
+                        ${v.ac ? '<div class="rental-ac-badge"><i class="bi bi-snow2"></i> Air Conditioned</div>' : ''}
+                        <button onclick="selectVehicleForRent('${v.name}')" class="btn btn-primary btn-sm rental-book-btn">Rent Now <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function populateVehicleDropdown(vehicles) {
+            const select = document.getElementById('rentVehicle');
+            select.innerHTML = '<option value="" disabled selected>Select Car / Bus</option>';
+            vehicles.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.name;
+                opt.textContent = `${v.name} (${v.type})`;
+                select.appendChild(opt);
+            });
+        }
+
+        function selectVehicleForRent(name) {
+            const select = document.getElementById('rentVehicle');
+            select.value = name;
+            document.getElementById('rentFormSec').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function setupFormHandler() {
+            const form = document.getElementById('rentalBookingForm');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Reset errors
+                const groups = form.querySelectorAll('.form-group');
+                groups.forEach(g => g.classList.remove('invalid'));
+
+                let isValid = true;
+                const fields = [
+                    { id: 'rentName', errorClass: 'invalid' },
+                    { id: 'rentPhone', errorClass: 'invalid' },
+                    { id: 'rentPickup', errorClass: 'invalid' },
+                    { id: 'rentDestination', errorClass: 'invalid' },
+                    { id: 'rentDate', errorClass: 'invalid' },
+                    { id: 'rentVehicle', errorClass: 'invalid' },
+                    { id: 'rentDays', errorClass: 'invalid' }
+                ];
+
+                fields.forEach(f => {
+                    const el = document.getElementById(f.id);
+                    if (!el.checkValidity()) {
+                        el.closest('.form-group').classList.add('invalid');
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) return;
+
+                const submitBtn = document.getElementById('rentSubmitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending Request...';
+
+                // Send request to API
+                const name = document.getElementById('rentName').value;
+                const phone = document.getElementById('rentPhone').value;
+                const pickup = document.getElementById('rentPickup').value;
+                const destination = document.getElementById('rentDestination').value;
+                const travelDate = document.getElementById('rentDate').value;
+                const vehicle = document.getElementById('rentVehicle').value;
+                const duration = document.getElementById('rentDays').value;
+                const message = document.getElementById('rentMessage').value;
+
+                try {
+                    const response = await fetch(`${API_BASE}/bookings`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            phone,
+                            pickup,
+                            destination,
+                            travelDate,
+                            people: 1, // default
+                            service: `Rental: ${vehicle} (${duration} Days)`,
+                            message: message ? `Duration: ${duration} Days. ${message}` : `Duration: ${duration} Days.`
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        alert('Rental booking inquiry submitted successfully! Our representative will call you shortly.');
+                        form.reset();
+                    } else {
+                        alert(data.message || 'Error submitting rental booking.');
+                    }
+                } catch (err) {
+                    alert('Connection failed. Please check your internet connection.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Submit Rental Enquiry <i class="bi bi-send-fill" style="margin-left:6px;"></i>';
+                }
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
