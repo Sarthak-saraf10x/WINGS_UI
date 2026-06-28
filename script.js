@@ -1043,8 +1043,9 @@ ${message ? `- *Message:* ${message}` : ''}`;
             const res = await fetch(`${API_URL}/packages/featured`);
             const data = await res.json();
 
-            if (data.success && data.data.length > 0) {
-                grid.innerHTML = ''; // Clear static ones
+            grid.innerHTML = ''; // Always clear first
+
+            if (data.success && data.data && data.data.length > 0) {
                 data.data.forEach(pkg => {
                     const card = document.createElement('div');
                     card.className = 'package-card reveal-slide-up active'; // force active class so they are visible immediately
@@ -1074,11 +1075,15 @@ ${message ? `- *Message:* ${message}` : ''}`;
                 
                 // Re-bind package button listeners
                 bindPackageButtons();
+            } else {
+                grid.innerHTML = '<div class="no-data-msg" style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);"><i class="bi bi-compass" style="font-size: 2.5rem; display: block; margin-bottom: 1rem; color: var(--primary);"></i><p>No tour packages available at the moment.</p></div>';
             }
         } catch (err) {
-            console.warn('Backend packages API unavailable. Using static fallback packages.');
+            console.warn('Backend packages API unavailable.');
+            grid.innerHTML = '<div class="no-data-msg" style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);"><i class="bi bi-compass" style="font-size: 2.5rem; display: block; margin-bottom: 1rem; color: var(--primary);"></i><p>No tour packages available at the moment.</p></div>';
         }
     }
+
 
     // B. Dynamic Gallery Loading
     async function fetchDynamicGallery() {
