@@ -69,12 +69,12 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="about.html" class="nav-link">About Us</a></li>
-                <li><a href="#packages" class="nav-link">Tour Packages</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#packages" class="nav-link">Tour Packages</a></li>
                 <li><a href="#fleet" class="nav-link">Our Fleet</a></li>
                 <li><a href="#rental-rates" class="nav-link">Rental Rates</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#booking" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -291,63 +291,7 @@
         </div>
     </section>
 
-    <!-- 6. Live Statistics Section -->
-    <section class="section stats-section bg-dark text-white">
-        <div class="stats-grid container" id="statsGrid">
-            <!-- Stat Item 1 -->
-            <div class="stat-item">
-                <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
-                <span class="stat-number" data-target="5000">0</span><span class="stat-suffix">+</span>
-                <p class="stat-label">Happy Customers</p>
-            </div>
-            <!-- Stat Item 2 -->
-            <div class="stat-item">
-                <div class="stat-icon"><i class="bi bi-journal-album"></i></div>
-                <span class="stat-number" data-target="250">0</span><span class="stat-suffix">+</span>
-                <p class="stat-label">Tour Packages</p>
-            </div>
-            <!-- Stat Item 3 -->
-            <div class="stat-item">
-                <div class="stat-icon"><i class="bi bi-car-front-fill"></i></div>
-                <span class="stat-number" data-target="100">0</span><span class="stat-suffix">+</span>
-                <p class="stat-label">Vehicles Fleet</p>
-            </div>
-            <!-- Stat Item 4 -->
-            <div class="stat-item">
-                <div class="stat-icon"><i class="bi bi-award-fill"></i></div>
-                <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
-                <p class="stat-label">Years Experience</p>
-            </div>
-            <!-- Stat Item 5 -->
-            <div class="stat-item">
-                <div class="stat-icon"><i class="bi bi-emoji-smile-fill"></i></div>
-                <span class="stat-number" data-target="99">0</span><span class="stat-suffix">%</span>
-                <p class="stat-label">Customer Satisfaction</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- 7. Responsive Masonry Gallery Section -->
-    <section id="gallery" class="section gallery-section">
-        <div class="section-header container">
-            <span class="section-tagline">Visual Journey</span>
-            <h2 class="section-title">Our Tour Gallery</h2>
-            <p class="section-subtitle">A glimpse of our immaculate fleet and the gorgeous destinations we have traveled
-                to with our delighted passengers.</p>
-        </div>
-
-        <div class="gallery-filters container">
-            <button class="filter-btn active" data-filter="all">All Photos</button>
-            <button class="filter-btn" data-filter="cars">Luxury Cars</button>
-            <button class="filter-btn" data-filter="buses">Tempo & Buses</button>
-            <button class="filter-btn" data-filter="destinations">Destinations</button>
-            <button class="filter-btn" data-filter="trips">Trips & Travelers</button>
-        </div>
-
-        <div class="gallery-grid container" id="galleryGrid">
-            <!-- Loaded dynamically from database -->
-        </div>
-    </section>
 
     <!-- ==================== OUR FLEET SECTION ==================== -->
     <section id="fleet" class="section fleet-section bg-light">
@@ -393,6 +337,66 @@
             </a>
         </div>
     </section>
+
+    <!-- ==================== TOUR GALLERY SECTION (Relocated below Rental Rates) ==================== -->
+    <section id="gallery" class="section gallery-section bg-light">
+        <div class="section-header container">
+            <span class="section-tagline">Visual Journey</span>
+            <h2 class="section-title">Our Tour Gallery</h2>
+            <p class="section-subtitle">A glimpse of our immaculate fleet and the gorgeous destinations we have traveled
+                to with our delighted passengers.</p>
+        </div>
+
+        <div class="gallery-filters container">
+            <button class="filter-btn active" data-filter="all">All Photos</button>
+            <button class="filter-btn" data-filter="cars">Luxury Cars</button>
+            <button class="filter-btn" data-filter="buses">Tempo & Buses</button>
+            <button class="filter-btn" data-filter="destinations">Destinations</button>
+            <button class="filter-btn" data-filter="trips">Trips & Travelers</button>
+        </div>
+
+        <div class="gallery-grid container" id="galleryGrid">
+            <!-- Loaded dynamically from database -->
+        </div>
+    </section>
+
+    <!-- 6. Live Statistics Section (Relocated below Our Tour Gallery) -->
+    <section class="section stats-section bg-dark text-white">
+        <div class="stats-grid container" id="statsGrid">
+            <!-- Stat Item 1 -->
+            <div class="stat-item">
+                <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+                <span class="stat-number" data-target="5000">0</span><span class="stat-suffix">+</span>
+                <p class="stat-label">Happy Customers</p>
+            </div>
+            <!-- Stat Item 2 -->
+            <div class="stat-item">
+                <div class="stat-icon"><i class="bi bi-journal-album"></i></div>
+                <span class="stat-number" data-target="250">0</span><span class="stat-suffix">+</span>
+                <p class="stat-label">Tour Packages</p>
+            </div>
+            <!-- Stat Item 3 -->
+            <div class="stat-item">
+                <div class="stat-icon"><i class="bi bi-car-front-fill"></i></div>
+                <span class="stat-number" data-target="100">0</span><span class="stat-suffix">+</span>
+                <p class="stat-label">Vehicles Fleet</p>
+            </div>
+            <!-- Stat Item 4 -->
+            <div class="stat-item">
+                <div class="stat-icon"><i class="bi bi-award-fill"></i></div>
+                <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+                <p class="stat-label">Years Experience</p>
+            </div>
+            <!-- Stat Item 5 -->
+            <div class="stat-item">
+                <div class="stat-icon"><i class="bi bi-emoji-smile-fill"></i></div>
+                <span class="stat-number" data-target="99">0</span><span class="stat-suffix">%</span>
+                <p class="stat-label">Customer Satisfaction</p>
+            </div>
+        </div>
+    </section>
+
+
 
     <!-- Custom Lightbox Modal -->
     <div id="lightbox" class="lightbox">
