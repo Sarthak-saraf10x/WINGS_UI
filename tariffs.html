@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Permanent+Marker&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -294,7 +294,7 @@
                 <li><a href="about.html" class="nav-link">About Us</a></li>
                 <li><a href="index.html#services" class="nav-link">Services</a></li>
                 <li><a href="index.html#packages" class="nav-link">Tour Packages</a></li>
-                <li><a href="index.html#fleet" class="nav-link">Our Fleet</a></li>
+                <li><a href="fleet.html" class="nav-link">Our Fleet</a></li>
                 <li><a href="index.html#rental-rates" class="nav-link active">Rental Rates</a></li>
                 <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
@@ -333,7 +333,7 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="#rentFormSec" class="btn btn-primary"><i class="bi bi-calendar-check-fill"></i> BOOK RENTAL CAB</a>
+                    <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20%26%20Travels,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20rental%20cab." target="_blank" rel="noopener" class="btn btn-primary"><i class="bi bi-calendar-check-fill"></i> BOOK RENTAL CAB</a>
                 </div>
             </div>
         </div>
@@ -351,85 +351,6 @@
             <div style="grid-column: 1/-1; text-align: center; padding: 60px 0;">
                 <div class="loader" style="margin: 0 auto; width: 40px; height: 40px; border: 3px solid rgba(0,0,0,0.06); border-radius: 50%; border-top-color: var(--color-secondary, #EF4444); animation: spin 1s ease infinite;"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Rent a Car Form Section -->
-    <section class="container tariffs-booking-container" id="rentFormSec">
-        <div class="booking-card-tariffs">
-            <h2>Rent A Car Online</h2>
-            <div class="form-subtitle">Fill out the quick form below. Our team will verify availability and contact you with booking confirmation.</div>
-            <form id="rentalBookingForm" novalidate>
-                <div class="form-row-2">
-                    <div class="form-group">
-                        <label for="rentName">Full Name *</label>
-                        <input type="text" id="rentName" required placeholder="Your full name">
-                        <span class="form-error">Full name is required.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="rentPhone">Phone Number *</label>
-                        <input type="tel" id="rentPhone" required pattern="^[0-9]{10}$" placeholder="10-digit mobile number">
-                        <span class="form-error">Please enter a valid 10-digit number.</span>
-                    </div>
-                </div>
-
-                <div class="form-row-2">
-                    <div class="form-group">
-                        <label for="rentPickup">Pickup Location *</label>
-                        <input type="text" id="rentPickup" required placeholder="Pickup address, hotel, or airport">
-                        <span class="form-error">Pickup location is required.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="rentDestination">Destination Location *</label>
-                        <input type="text" id="rentDestination" required placeholder="Drop location or city name">
-                        <span class="form-error">Destination is required.</span>
-                    </div>
-                </div>
-
-                <div class="form-row-3">
-                    <div class="form-group">
-                        <label for="rentDate">Rental Start Date *</label>
-                        <input type="date" id="rentDate" required>
-                        <span class="form-error">Start date is required.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="rentVehicle">Preferred Vehicle *</label>
-                        <select id="rentVehicle" required>
-                            <option value="" disabled selected>Select Car / Bus</option>
-                            <option value="Sedan (Swift Dzire)">Swift Dzire (Sedan)</option>
-                            <option value="Innova Crysta">Toyota Innova Crysta</option>
-                            <option value="Maruti Ertiga">Maruti Ertiga</option>
-                            <option value="Toyota Fortuner">Toyota Fortuner</option>
-                            <option value="Tempo Traveller">Tempo Traveller</option>
-                            <option value="Luxury Bus">Volvo / Luxury Bus</option>
-                        </select>
-                        <span class="form-error">Please select a vehicle.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="rentDays">Duration (Days) *</label>
-                        <input type="number" id="rentDays" min="1" max="60" required placeholder="e.g. 2">
-                        <span class="form-error">Please enter booking duration.</span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="rentMessage">Special Instructions (Optional)</label>
-                    <textarea id="rentMessage" rows="3" placeholder="Tell us about special requests, multi-city route, flight timings, or self-drive preference..."></textarea>
-                </div>
-
-                <button type="submit" id="rentSubmitBtn">Submit Rental Enquiry <i class="bi bi-send-fill" style="margin-left:6px;"></i></button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Looking for something specific / WhatsApp CTA -->
-    <section class="container">
-        <div class="specific-cta-section">
-            <div class="specific-cta-title">Looking for something specific?</div>
-            <p class="specific-cta-text">Need self-drive options, luxury cars for weddings, customized long-term monthly rentals, or corporate fleet bookings? Chat directly with us on WhatsApp for custom rates.</p>
-            <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20and%20Travels%2C%20I%20am%20looking%20for%20a%20specific%20car%20rental%2Ftariff%20details." target="_blank" rel="noopener" class="btn-whatsapp">
-                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
-            </a>
         </div>
     </section>
 
@@ -526,7 +447,8 @@
             <i class="bi bi-whatsapp"></i>
             <span>WhatsApp</span>
         </a>
-        <a href="#rentFormSec" class="mobile-bottom-item book-item" id="mobileBookBtn">
+        <a href="https://wa.me/918855052083?text=Hi%20Wings%20Tours%20%26%20Travels,%20I%20would%20like%20to%20inquire%20about%20a%20booking."
+            target="_blank" rel="noopener" class="mobile-bottom-item book-item">
             <i class="bi bi-calendar-check-fill"></i>
             <span>Book Now</span>
         </a>
@@ -542,11 +464,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             loadAllTariffs();
-            setupFormHandler();
-            // Set minimum date to today
-            const today = new Date().toISOString().split('T')[0];
-            const rentDateEl = document.getElementById('rentDate');
-            if (rentDateEl) rentDateEl.min = today;
         });
 
         async function loadAllTariffs() {
@@ -558,15 +475,12 @@
                 
                 if (data.success && data.data && data.data.length > 0) {
                     renderTariffs(data.data, grid);
-                    populateVehicleDropdown(data.data);
                 } else {
                     grid.innerHTML = '<div class="no-data-msg" style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);"><i class="bi bi-cash-coin" style="font-size: 2.5rem; display: block; margin-bottom: 1rem; color: var(--primary);"></i><p>No rental rates available at the moment.</p></div>';
-                    populateVehicleDropdown([]);
                 }
             } catch (err) {
                 console.warn('Backend rentals API unavailable.');
                 grid.innerHTML = '<div class="no-data-msg" style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);"><i class="bi bi-cash-coin" style="font-size: 2.5rem; display: block; margin-bottom: 1rem; color: var(--primary);"></i><p>No rental rates available at the moment.</p></div>';
-                populateVehicleDropdown([]);
             }
         }
 
@@ -592,106 +506,12 @@
                             ${v.minFare ? `<div class="rental-rate-item rental-min-fare"><span class="rental-rate-label"><i class="bi bi-info-circle"></i> Min Fare</span><span class="rental-rate-value">${v.minFare}</span></div>` : ''}
                         </div>
                         ${v.ac ? '<div class="rental-ac-badge"><i class="bi bi-snow2"></i> Air Conditioned</div>' : ''}
-                        <button onclick="selectVehicleForRent('${v.type}')" class="btn btn-primary btn-sm rental-book-btn">Rent Now <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn btn-primary btn-sm rental-book-btn">Rent Now <i class="bi bi-arrow-right"></i></button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
-        }
-
-        function populateVehicleDropdown(vehicles) {
-            const select = document.getElementById('rentVehicle');
-            select.innerHTML = '<option value="" disabled selected>Select Car / Bus</option>';
-            vehicles.forEach(v => {
-                const opt = document.createElement('option');
-                opt.value = v.type;
-                opt.textContent = `${v.type} (${v.capacity} Seater)`;
-                select.appendChild(opt);
-            });
-        }
-
-        function selectVehicleForRent(type) {
-            const select = document.getElementById('rentVehicle');
-            select.value = type;
-            document.getElementById('rentFormSec').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function setupFormHandler() {
-            const form = document.getElementById('rentalBookingForm');
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                // Reset errors
-                const groups = form.querySelectorAll('.form-group');
-                groups.forEach(g => g.classList.remove('invalid'));
-
-                let isValid = true;
-                const fields = [
-                    { id: 'rentName', errorClass: 'invalid' },
-                    { id: 'rentPhone', errorClass: 'invalid' },
-                    { id: 'rentPickup', errorClass: 'invalid' },
-                    { id: 'rentDestination', errorClass: 'invalid' },
-                    { id: 'rentDate', errorClass: 'invalid' },
-                    { id: 'rentVehicle', errorClass: 'invalid' },
-                    { id: 'rentDays', errorClass: 'invalid' }
-                ];
-
-                fields.forEach(f => {
-                    const el = document.getElementById(f.id);
-                    if (!el.checkValidity()) {
-                        el.closest('.form-group').classList.add('invalid');
-                        isValid = false;
-                    }
-                });
-
-                if (!isValid) return;
-
-                const submitBtn = document.getElementById('rentSubmitBtn');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending Request...';
-
-                // Send request to API
-                const name = document.getElementById('rentName').value;
-                const phone = document.getElementById('rentPhone').value;
-                const pickup = document.getElementById('rentPickup').value;
-                const destination = document.getElementById('rentDestination').value;
-                const travelDate = document.getElementById('rentDate').value;
-                const vehicle = document.getElementById('rentVehicle').value;
-                const duration = document.getElementById('rentDays').value;
-                const message = document.getElementById('rentMessage').value;
-
-                try {
-                    const response = await fetch(`${API_BASE}/bookings`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            name,
-                            phone,
-                            pickup,
-                            destination,
-                            travel_date: travelDate,
-                            people: 1, // default
-                            service: `Rental: ${vehicle} (${duration} Days)`,
-                            message: message ? `Duration: ${duration} Days. ${message}` : `Duration: ${duration} Days.`
-                        })
-                    });
-
-                    const data = await response.json();
-                    if (data.success) {
-                        alert('Rental booking inquiry submitted successfully! Our representative will call you shortly.');
-                        form.reset();
-                    } else {
-                        alert(data.message || 'Error submitting rental booking.');
-                    }
-                } catch (err) {
-                    alert('Connection failed. Please check your internet connection.');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Submit Rental Enquiry <i class="bi bi-send-fill" style="margin-left:6px;"></i>';
-                }
-            });
+            bindRentalButtons('fullTariffsGrid');
         }
     </script>
     <script src="script.js"></script>

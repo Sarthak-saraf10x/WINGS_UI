@@ -402,42 +402,40 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================= */
     const bindPackageButtons = () => {
         const packageBookBtns = document.querySelectorAll('.package-book-btn');
-        const selectService = document.getElementById('bookingService');
-        const messageTextarea = document.getElementById('bookingMessage');
-        const destinationInput = document.getElementById('bookingDestination');
 
         packageBookBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const packageName = btn.getAttribute('data-package');
-                
-                // Set service dropdown to 'Tour Packages'
-                if (selectService) {
-                    selectService.value = 'Tour Packages';
+                e.preventDefault();
+                const card = btn.closest('.package-card');
+                if (!card) return;
+
+                const packageName = card.querySelector('.package-title')?.textContent?.trim() || btn.getAttribute('data-package') || '';
+                const duration = card.querySelector('.package-duration')?.textContent?.trim() || '';
+                const price = card.querySelector('.package-price')?.textContent?.trim() || '';
+                const description = card.querySelector('.package-description')?.textContent?.trim() || '';
+
+                // Construct a professional WhatsApp message
+                let whatsappText = `Hi Wings Tours & Travels,
+
+I am interested in booking the following Tour Package:
+- *Package Name:* ${packageName}`;
+
+                if (duration) {
+                    whatsappText += `\n- *Duration:* ${duration}`;
                 }
-                
-                // Fill destination field
-                if (destinationInput) {
-                    const destinationMap = {
-                        'Goa Tour Package': 'Goa',
-                        'Mahabaleshwar Tour Package': 'Mahabaleshwar',
-                        'Shirdi Darshan Package': 'Shirdi Sai Temple',
-                        'Lonavala Package': 'Lonavala & Khandala',
-                        'Konkan Tour Package': 'Konkan Coastline',
-                        'Custom Tour Package': ''
-                    };
-                    destinationInput.value = destinationMap[packageName] || packageName.replace(' Tour Package', '').replace(' Package', '');
+                if (price) {
+                    whatsappText += `\n- *Price Details:* ${price}`;
+                }
+                if (description) {
+                    whatsappText += `\n- *Description:* ${description}`;
                 }
 
-                // Fill message field with pre-written request
-                if (messageTextarea) {
-                    messageTextarea.value = `I am interested in booking the "${packageName}". Please send details and quotation.`;
-                }
+                whatsappText += `\n\nPlease share the availability and quotation for booking.`;
 
-                // Smooth scroll to booking section
-                const bookingSection = document.getElementById('booking');
-                if (bookingSection) {
-                    bookingSection.scrollIntoView({ behavior: 'smooth' });
-                }
+                const encodedText = encodeURIComponent(whatsappText);
+                const whatsappUrl = `https://wa.me/918855052083?text=${encodedText}`;
+                
+                window.open(whatsappUrl, '_blank');
             });
         });
     };
@@ -1235,7 +1233,7 @@ async function fetchFleetVehicles() {
         const data = await res.json();
 
         if (data.success && data.data && data.data.length > 0) {
-            renderFleetCards(data.data);
+            renderFleetCards(data.data, 'fleetGrid', 4);
         } else {
             fleetGrid.innerHTML = '<div class="no-data-msg" style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);"><i class="bi bi-car-front" style="font-size: 2.5rem; display: block; margin-bottom: 1rem; color: var(--primary);"></i><p>No vehicles in fleet at the moment.</p></div>';
         }
@@ -1245,12 +1243,15 @@ async function fetchFleetVehicles() {
     }
 }
 
-function renderFleetCards(vehicles) {
-    const fleetGrid = document.getElementById('fleetGrid');
+function renderFleetCards(vehicles, containerId = 'fleetGrid', limit = null) {
+    const fleetGrid = document.getElementById(containerId);
     if (!fleetGrid) return;
     fleetGrid.innerHTML = '';
 
-    vehicles.forEach(v => {
+    const isHomepage = limit === 4;
+    const shown = isHomepage ? vehicles.slice(0, 4) : vehicles;
+
+    shown.forEach(v => {
         const card = document.createElement('div');
         card.className = 'fleet-card reveal-slide-up';
 
@@ -1294,6 +1295,12 @@ function renderFleetCards(vehicles) {
         fleetGrid.appendChild(card);
     });
 
+    // Show "View All" button if more than 4 vehicles
+    if (isHomepage && vehicles.length > 4) {
+        const wrap = document.getElementById('fleetViewAllWrap');
+        if (wrap) wrap.style.display = 'flex';
+    }
+
     // Re-run reveal observer on newly added cards
     const newRevealEls = fleetGrid.querySelectorAll('.reveal-slide-up');
     const observer = new IntersectionObserver((entries, obs) => {
@@ -1305,6 +1312,61 @@ function renderFleetCards(vehicles) {
         });
     }, { threshold: 0.1 });
     newRevealEls.forEach(el => observer.observe(el));
+
+    bindFleetButtons();
+}
+
+function bindFleetButtons() {
+    const fleetBookBtns = document.querySelectorAll('.fleet-book-btn');
+    fleetBookBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const card = btn.closest('.fleet-card');
+            if (!card) return;
+
+            const vehicleName = card.querySelector('.fleet-card-name')?.textContent?.trim() || '';
+            const vehicleType = card.querySelector('.fleet-card-badge')?.textContent?.trim() || '';
+
+            const specItems = card.querySelectorAll('.fleet-spec-item span');
+            const capacity = specItems[0]?.textContent?.trim() || '';
+            const fuelType = specItems[1]?.textContent?.trim() || '';
+            const transmission = specItems[2]?.textContent?.trim() || '';
+            const acType = specItems[3]?.textContent?.trim() || '';
+
+            const price = card.querySelector('.fleet-price')?.textContent?.trim() || '';
+
+            // Construct WhatsApp message
+            let whatsappText = `Hi Wings Tours & Travels,
+
+I am interested in booking the following Vehicle from your fleet:
+- *Vehicle Model:* ${vehicleName}`;
+
+            if (vehicleType) {
+                whatsappText += `\n- *Type/Category:* ${vehicleType}`;
+            }
+            if (capacity) {
+                whatsappText += `\n- *Capacity:* ${capacity}`;
+            }
+            if (fuelType) {
+                whatsappText += `\n- *Fuel Type:* ${fuelType}`;
+            }
+            if (transmission) {
+                whatsappText += `\n- *Transmission:* ${transmission}`;
+            }
+            if (acType) {
+                whatsappText += `\n- *AC/Non-AC:* ${acType}`;
+            }
+            if (price) {
+                whatsappText += `\n- *Pricing:* ${price}`;
+            }
+
+            whatsappText += `\n\nPlease share the availability and quotation for booking.`;
+
+            const encodedText = encodeURIComponent(whatsappText);
+            const whatsappUrl = `https://wa.me/918855052083?text=${encodedText}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    });
 }
 
 /* ==========================================================================
@@ -1383,4 +1445,48 @@ function renderRentalCards(vehicles, containerId = 'rentalRatesGrid', limit = 4)
         });
     }, { threshold: 0.08 });
     cards.forEach(c => obs.observe(c));
+
+    bindRentalButtons(containerId);
+}
+
+function bindRentalButtons(containerId) {
+    const grid = document.getElementById(containerId);
+    if (!grid) return;
+    const rentalBookBtns = grid.querySelectorAll('.rental-book-btn');
+    rentalBookBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const card = btn.closest('.rental-card');
+            if (!card) return;
+
+            const vehicleName = card.querySelector('.rental-card-name')?.textContent?.trim() || '';
+            const capacity = card.querySelector('.rental-card-capacity')?.textContent?.trim() || '';
+            const acStatus = card.querySelector('.rental-ac-badge') ? 'Air Conditioned' : 'Non-AC';
+
+            const rateItems = Array.from(card.querySelectorAll('.rental-rate-item')).map(item => {
+                const label = item.querySelector('.rental-rate-label')?.textContent?.trim() || '';
+                const val = item.querySelector('.rental-rate-value')?.textContent?.trim() || '';
+                return `*${label}:* ${val}`;
+            }).join('\n- ');
+
+            let whatsappText = `Hi Wings Tours & Travels,
+
+I am interested in renting the following vehicle from your Car Rental Rates:
+- *Vehicle:* ${vehicleName}`;
+
+            if (capacity) {
+                whatsappText += `\n- *Capacity:* ${capacity}`;
+            }
+            whatsappText += `\n- *AC status:* ${acStatus}`;
+            if (rateItems) {
+                whatsappText += `\n- ${rateItems}`;
+            }
+
+            whatsappText += `\n\nPlease share availability and booking details.`;
+
+            const encodedText = encodeURIComponent(whatsappText);
+            const whatsappUrl = `https://wa.me/918855052083?text=${encodedText}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    });
 }
