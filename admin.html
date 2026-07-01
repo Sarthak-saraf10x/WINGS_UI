@@ -1537,6 +1537,7 @@
                 <div class="form-group">
                     <label for="packageImage">Cover Photo Upload *</label>
                     <input type="file" id="packageImage" class="form-input" required accept="image/*">
+                    <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Recommended size: 800x600 pixels (4:3 ratio) or landscape flyers. <a href="javascript:void(0)" onclick="helpResizeImage('package')" style="color: var(--primary); text-decoration: underline; margin-left: 8px; font-weight: 500;"><i class="bi bi-magic"></i> Help me resize with ChatGPT</a></small>
                 </div>
                 <div class="checkbox-group">
                     <input type="checkbox" id="packageFeatured" checked>
@@ -1577,6 +1578,7 @@
                 <div class="form-group">
                     <label for="galleryImage">Select Image File *</label>
                     <input type="file" id="galleryImage" class="form-input" required accept="image/*">
+                    <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Recommended width: 800-1200 pixels. Supports both portrait and landscape (masonry layout). <a href="javascript:void(0)" onclick="helpResizeImage('gallery')" style="color: var(--primary); text-decoration: underline; margin-left: 8px; font-weight: 500;"><i class="bi bi-magic"></i> Help me optimize with ChatGPT</a></small>
                 </div>
                 <button type="submit" class="btn">Upload Photo <i class="bi bi-cloud-arrow-up-fill"></i></button>
             </form>
@@ -1655,6 +1657,7 @@
                 <div class="form-group">
                     <label for="vehicleImage">Vehicle Photo *</label>
                     <input type="file" id="vehicleImage" class="form-input" required accept="image/*">
+                    <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Recommended size: 800x500 pixels (landscape). Side-profile or front 3/4 view of the vehicle is best. <a href="javascript:void(0)" onclick="helpResizeImage('vehicle')" style="color: var(--primary); text-decoration: underline; margin-left: 8px; font-weight: 500;"><i class="bi bi-magic"></i> Help me resize with ChatGPT</a></small>
                 </div>
                 <button type="submit" class="btn">Add to Fleet <i class="bi bi-plus-circle"></i></button>
             </form>
@@ -1719,6 +1722,7 @@
                 <div class="form-group">
                     <label for="rentalImage">Vehicle Photo *</label>
                     <input type="file" id="rentalImage" class="form-input" required accept="image/*">
+                    <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Recommended size: 800x500 pixels (landscape). Side-profile or front 3/4 view of the vehicle is best. <a href="javascript:void(0)" onclick="helpResizeImage('vehicle')" style="color: var(--primary); text-decoration: underline; margin-left: 8px; font-weight: 500;"><i class="bi bi-magic"></i> Help me resize with ChatGPT</a></small>
                 </div>
                 <button type="submit" class="btn">Add to Rentals <i class="bi bi-plus-circle"></i></button>
             </form>
@@ -1738,6 +1742,29 @@
         let galleryList = [];
         let vehiclesList = [];
         let rentalsList = [];
+
+        // Copy ChatGPT resize prompt and open ChatGPT
+        function helpResizeImage(type) {
+            let promptText = '';
+            if (type === 'package') {
+                promptText = "Resize and expand the canvas of the uploaded image to exactly 800 × 600 pixels (4:3 landscape). Do not crop, zoom, rotate, or alter any part of the original design. Preserve all text, logos, graphics, colors, fonts, spacing, and layout exactly as they are. Only extend the background where necessary to fill the additional canvas area, seamlessly matching the existing background style, colors, gradients, patterns, and lighting. Do not add, remove, redesign, enhance, or modify any content. The only change should be the canvas size, resulting in an image that is exactly 800 × 600 pixels while keeping the original flyer completely intact.";
+            } else if (type === 'gallery') {
+                promptText = "Please optimize and crop this travel photo to be suitable for a high-quality website gallery. Keep the layout clean and ensure the key subject is centered and clearly visible.";
+            } else {
+                promptText = "Please crop or expand the background of this vehicle photo to fit a 1.6:1 aspect ratio (landscape, e.g. 800x500 pixels) ensuring the vehicle is centered, fully visible, and not cropped.";
+            }
+            
+            navigator.clipboard.writeText(promptText).then(() => {
+                showToast('ChatGPT prompt copied! Opening ChatGPT...', 'success');
+                setTimeout(() => {
+                    window.open('https://chatgpt.com', '_blank');
+                }, 1000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                showToast('Opening ChatGPT...', 'info');
+                window.open('https://chatgpt.com', '_blank');
+            });
+        }
 
         // Global fetch interceptor to handle expired or invalid JWT tokens (401 Unauthorized)
         const originalFetch = window.fetch;
